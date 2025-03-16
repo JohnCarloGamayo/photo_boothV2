@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Photo Booth</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Online Photo Booth</h1>
+    
+    <div class="photo-booth">
+      <!-- Step 1: Intro -->
+      <div id="step-intro" class="step active">
+        <div class="intro-content">
+          <div class="camera-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+              <circle cx="12" cy="13" r="3"></circle>
+            </svg>
+          </div>
+          <h2>Welcome to Online Photo Booth!</h2>
+          <p>Capture fun moments, choose a template, and download or print your creation.</p>
+          <button id="start-session" class="btn btn-primary">Start Photo Session</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Capture -->
+      <div id="step-capture" class="step">
+        <div class="capture-content">
+          <div class="video-container">
+            <video id="video" autoplay playsinline></video>
+            <div id="countdown" class="countdown"></div>
+          </div>
+          <canvas id="canvas" style="display: none;"></canvas>
+          
+          <div class="thumbnails">
+            <div class="thumbnail" id="thumbnail-1">
+              <span>1</span>
+            </div>
+            <div class="thumbnail" id="thumbnail-2">
+              <span>2</span>
+            </div>
+            <div class="thumbnail" id="thumbnail-3">
+              <span>3</span>
+            </div>
+          </div>
+          
+          <div class="controls">
+            <button id="switch-camera-btn" class="btn btn-outline">Switch to Back Camera</button>
+
+            <button id="capture-btn" class="btn btn-primary">Take First Photo</button>
+            <button id="reset-btn" class="btn btn-outline" disabled>Reset</button>
+          </div>
+          
+          <button id="continue-to-templates" class="btn btn-success" style="display: none;">Continue to Templates</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Template Selection -->
+      <div id="step-template" class="step">
+        <h2>Choose a Template</h2>
+        <div class="templates">
+          <div class="template-card" data-template="0">
+            <div class="template-preview">
+              <canvas id="template-preview-0" width="200" height="200"></canvas>
+            </div>
+            <p>Classic Strip</p>
+          </div>
+          <div class="template-card" data-template="1">
+            <div class="template-preview">
+              <canvas id="template-preview-1" width="200" height="200"></canvas>
+            </div>
+            <p>Polaroid Style</p>
+          </div>
+          <div class="template-card" data-template="2">
+            <div class="template-preview">
+              <canvas id="template-preview-2" width="200" height="200"></canvas>
+            </div>
+            <p>Modern Grid</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Final Result -->
+      <div id="step-final" class="step">
+        <h2>Your Creation</h2>
+        <div class="final-result">
+          <canvas id="final-canvas" width="500" height="500"></canvas>
+        </div>
+        <div class="final-controls">
+          <button id="download-btn" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download
+          </button>
+          <button id="print-btn" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print
+          </button>
+          <button id="start-over-btn" class="btn btn-ghost">Start Over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="photobooth.js"></script>
+</body>
+</html>
